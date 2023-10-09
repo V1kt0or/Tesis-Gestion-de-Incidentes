@@ -1,0 +1,28 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const mySchema = new Schema({
+    Nombre: {
+        type: String,
+        required: true,
+    },
+    Correo: {
+        type: String,
+        required: true,
+    },
+    Contrasena: {
+        type: String,
+        required: true,
+    },
+    Sede: {
+        type: String,
+        required: true,
+    },
+});
+
+var dbIncidentes = mongoose.createConnection('mongodb://victorIncidentes:victor123@127.0.0.1:27017/Incidentes-Back');
+
+dbIncidentes.Promise = global.Promise;
+
+const model = dbIncidentes.model('usuario', mySchema);
+module.exports = model;

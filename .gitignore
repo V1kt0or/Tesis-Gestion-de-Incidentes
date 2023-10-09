@@ -1,0 +1,45 @@
+# Dependencias de Node.js
+/node_modules
+
+# Archivos de registro y errores
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+yarn.lock
+
+# Directorios generados
+/dist
+/build
+
+# Dependencias locales
+/.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos temporales
+.cache
+.pnp
+.pnp.js
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Visual Studio Code
+.vscode/
+.settings/
+
+# Entorno de desarrollo
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# MacOS
+*.DS_Store
+
+# Editor de texto
+*.swp
