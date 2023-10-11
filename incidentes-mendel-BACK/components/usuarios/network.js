@@ -4,13 +4,10 @@ const bodyParser = require('body-parser');
 const response = require('../../network/response')
 const controller = require('./controller');
 
-var app = express();
+const app = express();
 app.use(bodyParser.json())
 app.use(router);
 
-/*const upload = multer({
-    dest: 'public/files/',
-})*/
 
 router.get('/',function (req,res){
     controller.obtenerUsuarios()

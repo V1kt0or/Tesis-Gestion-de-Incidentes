@@ -6,11 +6,11 @@ const controller = require('./controller');
 const multer = require('multer')
 var path = require('path');
 
-var app = express();
+const app = express();
 app.use(bodyParser.json())
 app.use(router);
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination:function(req,file,cb){
     cb(null,'public/files/')
     },
@@ -28,9 +28,6 @@ var upload = multer({ storage: storage,
      });
 
 
-/*const upload = multer({
-    dest: 'public/files/',
-})*/
 
 router.get('/',function (req,res){
     controller.obtenerIncidentes()

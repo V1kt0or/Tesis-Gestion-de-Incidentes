@@ -1,11 +1,5 @@
 const model = require('./model');
-/*const db = require('mongoose');
 
-db.Promise = global.Promise;
-
-db.connect('mongodb://victorIncidentes:victor123@127.0.0.1:27017/Incidentes-Back', {
-    useNewUrlParser: true,
-});*/
 
 function agregarIncidente(incidente) {
     const  nIncidente = new model(incidente);

@@ -33,7 +33,7 @@ const mySchema = new Schema({
     Descripcion: String,
 });
 
-var dbIncidentes = mongoose.createConnection('mongodb://victorIncidentes:victor123@127.0.0.1:27017/Incidentes-Back');
+const dbIncidentes = mongoose.createConnection('mongodb://victorIncidentes:victor123@127.0.0.1:27017/Incidentes-Back');
 
 dbIncidentes.Promise = global.Promise;
 

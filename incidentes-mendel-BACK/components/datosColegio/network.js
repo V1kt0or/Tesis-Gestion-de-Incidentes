@@ -4,17 +4,13 @@ const bodyParser = require('body-parser');
 const response = require('../../network/response')
 const controller = require('./controller');
 const multer = require('multer')
-var path = require('path');
+const path = require('path');
 
-var app = express();
+const app = express();
 app.use(bodyParser.json())
 app.use(router);
 
 
-
-/*const upload = multer({
-    dest: 'public/files/',
-})*/
 
 router.get('/alumnos',function (req,res){
     controller.obtenerAlumnos()

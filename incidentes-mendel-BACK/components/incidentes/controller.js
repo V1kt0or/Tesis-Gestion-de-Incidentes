@@ -26,7 +26,6 @@ function crearIncidente(nombre, codigo, categoria, nombreUsuario, NombreAfectado
             Prioridad: Prioridad,
             Estado: 'Sin revisar',
             FechaCreacion: new Date(),
-            ArchivoAdjunto: ArchivoAdjunto,
             Descripcion: Descripcion,
             ArchivoAdjunto: archivoUrl,
          }

@@ -7,7 +7,7 @@ const mySchema = new Schema({
     Apellido2: String,
 }, { collection: 'Alumno' });
 
-var dbIncidentes = mongoose.createConnection('mongodb://victorMendel:victor123@127.0.0.1:27017/mendelclass');
+const dbIncidentes = mongoose.createConnection('mongodb://victorMendel:victor123@127.0.0.1:27017/mendelclass');
 
 dbIncidentes.Promise = global.Promise;
 
