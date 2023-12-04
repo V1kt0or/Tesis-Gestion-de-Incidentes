@@ -7,11 +7,18 @@ function obtenerAlumnos(){
     });
 }
 
-function obtenerAlumnosSede(codigo){
+function obtenerAlumnosSede(codigo,nombre){
     return new Promise ((resolve, reject) => {
-        resolve(functions.listaS(codigo));
+        resolve(functions.listaS(codigo, nombre));
     });
 }
+
+function obtenerAlumnosSedePagina(codigo,nombre,cant_pagina,pagina) {
+    return new Promise ((resolve, reject) => {
+        resolve(functions.listaSPag(codigo,nombre,cant_pagina,pagina));
+    });
+}
+
 
 function obtenerAlumno(id){
     return new Promise ((resolve, reject) => {
@@ -39,5 +46,6 @@ module.exports = {
     obtenerAlumno,
     obtenerDocente,
     obtenerDocentes,
-    obtenerAlumnosSede
+    obtenerAlumnosSede,
+    obtenerAlumnosSedePagina
 }

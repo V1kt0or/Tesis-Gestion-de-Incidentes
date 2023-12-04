@@ -16,7 +16,10 @@ async function obtenerAlumnos(){
     return incidentes;
 }
 
-async function obtenerAlumnosSede(codigo){
+async function obtenerAlumnosSede(codigo, nombre){
+  if (nombre ==null){
+    nombre = "";
+  }
     const incidentes = await modelo.model.find({
         $and: [
             {
@@ -29,12 +32,40 @@ async function obtenerAlumnosSede(codigo){
                 ]
               }
             },
-            { CodInst: parseInt(codigo) } // Ciudad igual a 1
+            { CodInst: parseInt(codigo) },
+            { Nombre: { $regex: nombre, $options: 'i' } }
           ]
         });
-
+    
+    
     return incidentes;
 }
+
+async function obtenerAlumnosSedePorPag(codigo, nombre,cant_pagina,pagina){
+  if (nombre ==null){
+    nombre = "";
+  }
+    const incidentes = await modelo.model.find({
+        $and: [
+            {
+              $expr: {
+                $and: [
+                  { $ne: ['$Codigo', ''] }, // Asegura que 'Codigo' no sea una cadena vacía
+                  { $gt: [{ $toInt: { $trim: { input: '$Codigo' } } }, 230000] }, // Mayor que 230000
+                  { $lt: [{ $toInt: { $trim: { input: '$Codigo' } } }, 250000] },
+                  { $lt: [{ $toInt: { $trim: { input: '$Codigo' } } }, 250000] } // Menor que 250000
+                ]
+              }
+            },
+            { CodInst: parseInt(codigo) },
+            { Nombre: { $regex: nombre, $options: 'i' } }
+          ]
+        }).limit(cant_pagina).skip(cant_pagina*(pagina -1));
+    
+    
+    return incidentes;
+}
+
 
 async function obtenerAlumno(id){
     const  incidente = await modelo.model.findOne({
@@ -59,5 +90,6 @@ module.exports = {
     verA: obtenerAlumno,
     listaD: obtenerDocentes,
     verD: obtenerDocente,
-    listaS: obtenerAlumnosSede
+    listaS: obtenerAlumnosSede,
+    listaSPag: obtenerAlumnosSedePorPag
 }

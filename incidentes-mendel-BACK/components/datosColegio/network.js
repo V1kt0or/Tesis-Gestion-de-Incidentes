@@ -32,8 +32,22 @@ router.get('/alumnos/:id',function (req,res){
     })
 })
 
-router.get('/alumnos/sede/:id',function (req,res){
-    controller.obtenerAlumnosSede(req.params.id)
+router.get('/alumnos/sede/:id/:id2?',function (req,res){
+    const id = req.params.id;
+    const id2 = req.params.id2 || null;
+    controller.obtenerAlumnosSede(id,id2)
+    .then((mensaje)=> {
+        response.success(req,res,mensaje, 200)
+    })
+    .catch(e =>{
+        response.error(req,res, 'Error inesperado', 500, e)
+    })
+})
+
+router.get('/alumnos/sede/:id/pag/:id3/:id4/:id2?',function (req,res){
+    const id = req.params.id;
+    const id2 = req.params.id2 || null;
+    controller.obtenerAlumnosSedePagina(id,id2,req.params.id3,req.params.id4)
     .then((mensaje)=> {
         response.success(req,res,mensaje, 200)
     })
